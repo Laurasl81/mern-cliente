@@ -31,7 +31,6 @@ const TareaState = props => {
     try {
 
         const resultado = await clienteAxios.get('/api/tareas', {params: {proyecto}});
-        console.log(resultado); 
 
         dispatch({
             type: TAREAS_PROYECTO,
@@ -47,9 +46,8 @@ const TareaState = props => {
     // Agregar una tarea al proyecto seleccionado
     const agregarTarea = async tarea => {
     try {
+        //eslint-disable-next-line
         const resultado = await clienteAxios.post('api/tareas', tarea);
-        console.log(resultado);
-
         dispatch({
             type: AGREGAR_TAREA,
             payload: tarea
@@ -87,7 +85,6 @@ const TareaState = props => {
         try {
 
           const resultado = await clienteAxios.put(`/api/tareas/${tarea._id}`, tarea)
-          console.log(resultado);
             dispatch({
                 type: ACTUALIZAR_TAREA,
                 payload: resultado.data.tarea

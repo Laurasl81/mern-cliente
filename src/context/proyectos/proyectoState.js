@@ -45,7 +45,14 @@ const ProyectoState = props => {
             payload: resultado.data.proyectos
         })
        } catch (error) {
-           console.log(error);
+           const alerta = {
+               msg: "Hubo un error al obtener los proyectos",
+               categoria: "alerta-error"
+           }
+           dispatch({
+               type: PROYECTO_ERROR,
+               payload: alerta
+           })
        }
     }
 
@@ -54,7 +61,6 @@ const ProyectoState = props => {
       
         try {
             const resultado = await clienteAxios.post('/api/proyectos', proyecto);
-            console.log(resultado);
                // Insertar el proyecto en el state
         dispatch({
             type: AGREGAR_PROYECTO,
@@ -63,7 +69,14 @@ const ProyectoState = props => {
         })
 
         } catch (error) {
-            console.log(error);
+            const alerta = {
+                msg: "Hubo un error al añadir el proyecto",
+                categoria: "alerta-error"
+            }
+            dispatch({
+                type: PROYECTO_ERROR,
+                payload: alerta
+            })
         }
     }
 
